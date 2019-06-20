@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.lpp.demo.mapper.StatsUserMapper" >
+    <select id="byPlatform" parameterType="java.util.Date" resultType="com.lpp.demo.domain.StatsUser">
+        SELECT * FROM stats_user WHERE TO_DAYS(created)=TO_DAYS(#{date})
+    </select>
+
+    <select id="consumerInfo" parameterType="java.util.Date" resultType="com.lpp.demo.domain.StatsUser">
+        SELECT total_install_users,new_install_users,active_users FROM stats_user WHERE TO_DAYS(created)=TO_DAYS(#{date})
+    </select>
+
+    <select id="memberInfo" parameterType="java.util.Date" resultType="com.lpp.demo.domain.StatsUser">
+        SELECT total_members,active_members,new_members FROM stats_user WHERE TO_DAYS(created)=TO_DAYS(#{date})
+    </select>
+
+</mapper>
